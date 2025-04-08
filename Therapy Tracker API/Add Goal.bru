@@ -1,0 +1,21 @@
+meta {
+  name: Add Goal
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:5000/goals
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzM5MjI0NjMwLCJleHAiOjE3MzkyMjgyMzB9.CT470FnH9JiN8bSNz3njMbQt0roX0KZqnbZ2IMatFCk
+}
+
+body:json {
+  {
+    "description": "Practice mindfulness for 10 minutes daily."
+  }
+}
