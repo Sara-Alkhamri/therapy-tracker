@@ -1,6 +1,7 @@
 
 # Project Title  
 Therapy Tracker 
+*A mental health progress tracker with session logging and goal analytics.*
 
 ## Badges  
 
