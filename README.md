@@ -15,9 +15,6 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
     1. [Sub paragraph](#subparagraph1)  
 3. [Another paragraph](#paragraph2)  
 
-## Screenshots  
-
-![App Screenshot](https://lanecdr.org/wp-content/uploads/2019/08/placeholder.png)
 
 ## Tech Stack  
 
@@ -92,7 +89,7 @@ body:json {
 }
 ~~~
 
-##Project Structure
+## Project Structure
 ~~~bash 
 therapy-tracker/
 ├── Therapy Tracker API/
@@ -111,7 +108,7 @@ therapy-tracker/
 └── README.md
 ~~~
 
-##Available Scripts
+## Available Scripts
 frontend
 ~~~bash 
 npm start      # Start dev server
