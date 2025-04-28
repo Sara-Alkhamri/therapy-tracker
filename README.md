@@ -8,7 +8,7 @@ Therapy Tracker-
 [![Vercel](https://img.shields.io/badge/Vercel-Deployed-black?logo=vercel)](https://therapy-tracker-sigma.vercel.app/)  
 
 **Frontend**:  
-➡️ [Live Demo](https://therapy-tracker-abc123.vercel.app)  
+➡️ [Live Demo](https://therapy-tracker-sigma.vercel.app)  
 *(Temporary preview - data resets periodically)*  
 
 ## Badges  
