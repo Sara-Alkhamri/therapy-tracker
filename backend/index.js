@@ -1,6 +1,5 @@
-// backend/index.js
 const express = require('express');
-const cors = require('cors'); // Import the cors package
+const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const sqlite3 = require('sqlite3').verbose();
 const jwt = require('jsonwebtoken');

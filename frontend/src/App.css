@@ -34,7 +34,56 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Add to your main CSS file */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+/* Apply your color scheme */
+:root {
+  --primary: #0395ff;
+  --primary-dark: #0271c5;
+  --accent: #ff78e5;
+  --text-dark: #2c3e50;
+  --text-medium: #4a5568;
+  --text-light: #f5f7fa;
+}
+
+/* Typography */
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Button styles to match landing page */
+.btn-primary {
+  @apply bg-[var(--primary)] text-white px-6 py-2 rounded-md font-semibold hover:bg-[var(--primary-dark)] transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-white text-[var(--primary)] border-2 border-[var(--primary)] px-6 py-2 rounded-md font-semibold hover:bg-gray-50 transition-colors;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white p-6 rounded-lg shadow-md;
+}
+
+/* Form elements */
+.input-field {
+  @apply w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent;
 }

@@ -1,0 +1,221 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use 'sass:map';
+
+
+.hero-section {
+    padding: 8rem 2rem 4rem;
+    background: map.get($gradients, hero-bg);
+
+    .hero-container {
+        max-width: map.get($spacing, container);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+
+        @include respond-to(md) {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    .hero-content {
+        flex: 1;
+
+        h1 {
+            color: map.get($colors, text-medium);
+        }
+
+        .highlight {
+            color: map.get($colors, accent)
+        }
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+
+        span {
+            color: map.get($colors, accent);
+        }
+
+        @include respond-to(md) {
+            font-size: 2.2rem;
+        }
+
+        @include respond-to(sm) {
+            font-size: 1.8rem;
+        }
+    }
+
+    .subhead {
+        font-size: 1.2rem;
+        color: map.get($colors, text-medium);
+        margin-bottom: 2rem;
+        max-width: 600px;
+
+        .highlight {
+            color: map.get($colors, primary);
+            font-weight: bold;
+        }
+    }
+}
+
+/* Features Section */
+.features-section {
+    padding: map.get($spacing, section);
+    background: #fffbf3;
+
+    .section-container {
+        max-width: map.get($spacing, container);
+        margin: 0 auto;
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: map.get($colors, text-medium);
+
+            .highlight {
+                color: map.get($colors, primary);
+            }
+        }
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+
+        @include respond-to(md) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .feature-card {
+        background: map.get($colors, white);
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        img {
+            height: 150px;
+            padding-bottom: 1rem;
+            ;
+
+            @include respond-to(sm) {
+                height: 180px;
+            }
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: map.get($colors, text-medium);
+
+        }
+
+        p {
+            color: map.get($colors, text-medium);
+        }
+    }
+}
+
+/* Testimonial Section */
+.testimonial-section {
+    background: url('/assets/images/testimonials-bg1.png') no-repeat right/auto;
+    height: 345px;
+
+    .testimonial-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    blockquote {
+        font-size: 1.3rem;
+        font-style: italic;
+        line-height: 1.6;
+        color: map.get($colors, text-dark);
+        padding-top: 9rem;
+        padding-left: 8rem;
+
+        @include respond-to(lg) {
+            width: 600px;
+            padding-top: 7rem;
+        }
+
+        @include respond-to(md) {
+            padding: 0;
+            width: 100%;
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        @include respond-to(sm) {
+            font-size: 1rem;
+            padding: 7rem 4rem;
+        }
+    }
+
+    cite {
+        display: block;
+        font-style: normal;
+        font-weight: 600;
+        color: map.get($colors, primary);
+    }
+}
+
+/* Final CTA */
+.final-cta {
+    padding: 6rem 2rem;
+    background: #fffbf3;
+    text-align: center;
+
+    h2 {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 2rem;
+        color: map.get($colors, text-medium);
+
+        @include respond-to(md) {
+            font-size: 2rem;
+        }
+    }
+}
+
+/* Utilities */
+.text-center {
+    text-align: center;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

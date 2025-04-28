@@ -1,0 +1,42 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use 'sass:map';
+
+
+.landing-nav {
+    background: map.get($colors, white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+
+    .nav-container {
+        max-width: map.get($spacing, container);
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: map.get($colors, primary);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 1rem;
+    }
+
+    @include respond-to(md) {
+        .nav-container {
+            padding: 0.8rem 1.5rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+        }
+    }
+}

@@ -1,0 +1,66 @@
+// src/scss/components/_buttons.scss
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use 'sass:map';
+
+// Create mixins for button styles
+@mixin btn-styles {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: none;
+}
+
+@mixin btn-primary {
+    background: map.get($colors, primary);
+    color: map.get($colors, white);
+
+    &:hover {
+        background: map.get($colors, primary-dark);
+        transform: translateY(-2px);
+    }
+}
+
+@mixin btn-secondary {
+    background: map.get($colors, white);
+    color: map.get($colors, primary);
+    border: 2px solid map.get($colors, primary);
+
+    &:hover {
+        background: #f0f9f8;
+        transform: translateY(-2px);
+    }
+}
+
+// Keep the original classes for other usage
+.btn {
+    @include btn-styles;
+
+    &--primary {
+        @include btn-primary;
+    }
+
+    &--secondary {
+        @include btn-secondary;
+    }
+
+    &--small {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    @include respond-to(sm) {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,30 @@
+// 1. Abstracts (Variables, Mixins, Functions - Must come first)
+@use './abstracts/variables' as *;
+@use './abstracts/mixins' as *;
+@use './abstracts/functions' as *;
+
+// 2. Base (Resets and fundamental styles)
+@use './base/reset';
+@use './base/typography';
+
+// 3. Components (Reusable UI elements)
+@use './components/buttons';
+@use './components/cards';
+@use './components/modals';
+@use './components/forms';
+@use './components/navigation';
+@use './components/charts';
+
+// 4. Layout (Macro-level organization)
+@use './layout/header';
+@use './layout/footer';
+@use './layout/grid';
+
+// 5. Pages (Page-specific styles)
+@use './pages/home';
+@use './pages/dashboard';
+@use './pages/auth';
+
+// 6. Utilities (Helpers and overrides)
+// @use 'utilities/animations';
+// @use 'utilities/helpers';

@@ -19,6 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "scss": "sass scss/main.scss public/css/styles.css --watch",
+    "scss:build": "sass scss/main.scss public/css/styles.css --style=compressed",
     "build:css": "npx tailwindcss build src/index.css -o src/tailwind.css",
     "watch:css": "npx tailwindcss build src/index.css -o src/tailwind.css --watch"
   },
@@ -43,6 +45,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "postcss": "^8.5.2",
+    "sass": "^1.86.3",
     "tailwindcss": "^3.4.17"
   }
 }

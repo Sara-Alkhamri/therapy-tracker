@@ -1,0 +1,100 @@
+// src/scss/components/_footer.scss
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use 'sass:map';
+
+.footer {
+    background: map.get($colors, text-dark);
+    color: map.get($colors, white);
+    padding: 2rem 0;
+
+    &__container {
+        max-width: map.get($spacing, container);
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+
+        @include respond-to(md) {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+    }
+
+    &__links {
+        display: flex;
+        gap: 1.5rem;
+        order: 2;
+
+        @include respond-to(md) {
+            order: 1;
+        }
+
+        a {
+            color: map.get($colors, white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: map.get($colors, primary-light);
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__copyright {
+        font-size: 0.9rem;
+        order: 1;
+
+        @include respond-to(md) {
+            order: 2;
+        }
+    }
+
+    &__newsletter {
+        width: 100%;
+        max-width: 24rem;
+        order: 3;
+        margin-top: 1.5rem;
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer__newsletter-form {
+            display: flex;
+
+            input {
+                flex-grow: 1;
+                padding: 0.5rem 1rem;
+                border: none;
+                border-radius: 0.25rem 0 0 0.25rem;
+                color: map.get($colors, text-dark);
+
+                &:focus {
+                    outline: 2px solid map.get($colors, primary);
+                }
+            }
+
+            button {
+                background: map.get($colors, primary);
+                color: white;
+                padding: 0.5rem 1rem;
+                border: none;
+                border-radius: 0 0.25rem 0.25rem 0;
+                cursor: pointer;
+                transition: background 0.3s ease;
+
+                &:hover {
+                    background: map.get($colors, primary-dark);
+                }
+            }
+        }
+    }
+}

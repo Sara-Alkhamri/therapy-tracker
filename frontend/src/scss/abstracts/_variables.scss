@@ -1,0 +1,40 @@
+// Colors
+$colors: (
+    primary: #0395ff,
+    primary-dark: #0271c5,
+    accent: #ff78e5,
+    text-dark: #2c3e50,
+    text-medium: #4a5568,
+    text-light: #f5f7fa,
+    white: #ffffff,
+    black: #000000
+);
+
+$gradients: (
+    'hero-bg': linear-gradient(135deg, #f5f7fa 0%, #e6f0f9 100%)
+);
+
+$spacing: (
+    'container': 1200px
+);
+
+// Typography (corrected)
+$fonts: (
+    body: ('Open Sans', sans-serif),
+    heading: ('Poppins', sans-serif)
+);
+
+// Breakpoints
+$breakpoints: (
+    sm: 480px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1200px
+);
+
+// Spacing
+$spacing: (
+    section: 2rem,
+    container: 1200px,
+    button-padding: 0.8rem 1.5rem
+);

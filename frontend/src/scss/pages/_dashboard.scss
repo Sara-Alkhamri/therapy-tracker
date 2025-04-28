@@ -1,0 +1,230 @@
+// src/scss/components/dashboard.scss
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use 'sass:map';
+
+.dashboard {
+    padding: 3rem 2rem;
+    background: map.get($gradients, 'hero-bg');
+    min-height: 100vh;
+
+    &__container {
+        max-width: map.get($spacing, 'container');
+        margin: 0 auto;
+    }
+
+    &__header {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.9); // Fixed - using direct rgba
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #0395ff, #ff78e5); // Fixed - direct colors
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #4a5568; // text-medium
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    &__card {
+        background: rgba(map.get($colors, white), 0.95);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(map.get($colors, primary), 0.1);
+        display: flex;
+        flex-direction: column;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: map.get($colors, primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+
+            &::before {
+                content: '';
+                display: inline-block;
+                width: 8px;
+                height: 8px;
+                background: map.get($colors, accent);
+                border-radius: 50%;
+            }
+        }
+    }
+
+    &__affirmation {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: map.get($colors, text-dark);
+            font-style: italic;
+            padding: 1.5rem;
+            background: rgba(map.get($colors, primary), 0.05);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            position: relative;
+
+            &::before,
+            &::after {
+                content: '"';
+                font-size: 3rem;
+                color: rgba(map.get($colors, primary), 0.2);
+                position: absolute;
+            }
+
+            &::before {
+                top: -0.5rem;
+                left: 0.5rem;
+            }
+
+            &::after {
+                bottom: -2rem;
+                right: 0.5rem;
+            }
+        }
+    }
+
+    &__chart-container {
+        height: 250px;
+        margin-bottom: 1.5rem;
+        position: relative;
+
+        .recharts-wrapper {
+            margin: 0 auto;
+        }
+    }
+
+    &__cta {
+        text-align: center;
+        margin-top: 3rem;
+    }
+
+    .loading-spinner {
+        margin: 2rem auto;
+    }
+
+    &__heatmap {
+        .heatmap-streak-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .streak-display {
+            text-align: center;
+            margin-right: 2rem;
+            min-width: 80px;
+
+            .streak-count {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: map.get($colors, 'primary');
+                line-height: 1;
+            }
+
+            .streak-label {
+                font-size: 0.9rem;
+                color: map.get($colors, 'text-medium');
+                margin-top: 0.25rem;
+            }
+
+            .streak-emoji {
+                font-size: 1.5rem;
+                margin-top: 0.5rem;
+            }
+        }
+
+        .heatmap-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .heatmap-week {
+            display: flex;
+            gap: 4px;
+        }
+
+        .heatmap-day {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            background: map.get($colors, 'text-light');
+            transition: transform 0.2s ease;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+
+            &.mood-1 {
+                background: #ff6b6b;
+            }
+
+            // Lowest mood
+            &.mood-2 {
+                background: #ffb347;
+            }
+
+            &.mood-3 {
+                background: #f9f9a5;
+            }
+
+            &.mood-4 {
+                background: #a5d8ff;
+            }
+
+            &.mood-5 {
+                background: #77dd77;
+            }
+
+            // Highest mood
+        }
+    }
+}
+
+.bar-cell-primary {
+    fill: #0395ff; // primary color
+}
+
+.bar-cell-accent {
+    fill: #ff78e5; // accent color
+}
+
+.recharts-line {
+    stroke: #0395ff; // primary color
+    stroke-width: 2;
+}

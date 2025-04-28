@@ -1,52 +1,88 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 
 const AuthContext = createContext();
 
-const AuthProvider = ({ children }) => {
-    const [token, setToken] = useState(localStorage.getItem('token'));
-    const [userEmail, setUserEmail] = useState(localStorage.getItem('userEmail')); // Store user email
+export const AuthProvider = ({ children }) => {
+    const [isInitialized, setIsInitialized] = useState(false);
+    const [token, setToken] = useState(null);
+    const [user, setUser] = useState(null);
 
-    // Check if the user is authenticated
-    const isAuthenticated = !!token;
-
-    // Login function
-    const login = (token, email) => {
-        localStorage.setItem('token', token);
-        localStorage.setItem('userEmail', email); // Save user email
-        setToken(token);
-        setUserEmail(email);
-    };
-
-    // Logout function
-    const logout = (navigate) => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('userEmail');
-        setToken(null);
-        setUserEmail(null);
-        if (navigate) {
-            navigate('/login'); // Redirect to the login page
-        }
-    };
-
-    // Automatically log out if the token expires
     useEffect(() => {
-        const checkTokenExpiration = () => {
-            if (token) {
-                const decodedToken = JSON.parse(atob(token.split('.')[1])); // Decode the token
-                if (decodedToken.exp * 1000 < Date.now()) {
-                    logout();
+        const initializeAuth = () => {
+            try {
+                const storedToken = localStorage.getItem('token');
+                const storedUser = localStorage.getItem('user');
+
+                if (storedToken) {
+                    // Optional: Add token expiration check here
+                    setToken(storedToken);
                 }
+
+                if (storedUser) {
+                    try {
+                        setUser(JSON.parse(storedUser));
+                    } catch (e) {
+                        console.error("Failed to parse user data:", e);
+                        localStorage.removeItem('user');
+                    }
+                }
+            } catch (error) {
+                console.error("Auth initialization error:", error);
+            } finally {
+                setIsInitialized(true);
             }
         };
 
-        checkTokenExpiration();
-    }, [token]);
+        initializeAuth();
+    }, []);
+
+    const login = (newToken, userData, expiresIn) => {
+        try {
+            localStorage.setItem('token', newToken);
+            localStorage.setItem('user', JSON.stringify(userData));
+            if (expiresIn) {
+                const expiryDate = new Date();
+                expiryDate.setSeconds(expiryDate.getSeconds() + expiresIn);
+                localStorage.setItem('token_expiry', expiryDate.toISOString());
+            }
+            setToken(newToken);
+            setUser(userData);
+        } catch (error) {
+            console.error("Login error:", error);
+        }
+    };
+
+    const logout = () => {
+        try {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            localStorage.removeItem('token_expiry');
+            setToken(null);
+            setUser(null);
+        } catch (error) {
+            console.error("Logout error:", error);
+        }
+    };
+
+    const isAuthenticated = !!token;
 
     return (
-        <AuthContext.Provider value={{ token, isAuthenticated, userEmail, login, logout }}>
-            {children}
+        <AuthContext.Provider value={{
+            token,
+            user,
+            isAuthenticated,
+            isInitialized,
+            login,
+            logout
+        }}>
+            {isInitialized ? children : <div>Loading...</div>}
         </AuthContext.Provider>
     );
 };
 
-export { AuthContext, AuthProvider };
+AuthProvider.propTypes = {
+    children: PropTypes.node.isRequired
+};
+
+export const useAuth = () => useContext(AuthContext);
