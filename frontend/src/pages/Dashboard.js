@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend /* eslint-disable-line no-unused-vars */, ResponsiveContainer } from 'recharts';
 import { BarChart, Bar, Cell } from 'recharts';
 import fetchSessions from '../api/fetchSessions';
 import fetchGoals from '../api/fetchGoals';
