@@ -68,7 +68,7 @@ backend
 npm install  
 echo "JWT_SECRET=your_strong_secret_here" > .env  
 echo "PORT=5000" >> .env  
-node server.js 
+node index.js 
 ~~~
 
 ## API Documentation
