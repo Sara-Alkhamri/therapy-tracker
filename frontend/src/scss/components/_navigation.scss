@@ -20,9 +20,17 @@
     }
 
     .logo {
+        display: flex;
+        align-items: center;
         font-size: 1.8rem;
         font-weight: 600;
         color: map.get($colors, primary);
+
+        .logo-text {
+            font-family: "Funnel Display", sans-serif;
+            margin-bottom: unset;
+            margin-left: -35px;
+        }
     }
 
     .nav-links {

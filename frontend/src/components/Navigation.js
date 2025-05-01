@@ -58,7 +58,7 @@ const Navigation = ({ variant = 'dashboard' }) => {
                     <div className="nav-container">
                         <Link to="/" className="logo">
                             <img src="/logo.png" alt="Solace Logo" className="logo-image" />
-                            <p>Solace</p>
+                            <p className='logo-text'>Solace</p>
                         </Link>
                         <div className="nav-links">
                             <button
