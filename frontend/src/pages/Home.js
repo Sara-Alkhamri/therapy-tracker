@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import Navigation from '../components/Navigation';
 import AuthForm from '../components/AuthForm';
 import Footer from '../components/Footer';
 import '../scss/components/_buttons.scss'
@@ -8,7 +8,7 @@ import journalIcon from "../assets/images/journal-icon.png";
 import secureIcon from "../assets/images/secure-icon.png";
 
 const Home = () => {
-    const [authModal, setAuthModal] = useState(null); // 'login' or 'register'
+    const [authModal, setAuthModal] = useState(null);
     const [newlyRegistered, setNewlyRegistered] = useState(false);
 
     const modalRef = useRef(null);
@@ -68,34 +68,7 @@ const Home = () => {
         <div className="home">
             {/* Auth Modal */}
             {authModal && <AuthModal type={authModal} />}
-
-
-            {/* Navigation */}
-            <nav className="landing-nav">
-                <div className="nav-container">
-                    <Link to="/" className="logo">
-                        <img
-                            src="/logo.png"
-                            alt="Solace Logo"
-                            className="logo-image"
-                        />
-                    </Link>
-                    <div className="nav-links">
-                        <button
-                            onClick={() => setAuthModal('login')}
-                            className="btn btn--secondary"
-                        >
-                            Login
-                        </button>
-                        <button
-                            onClick={() => setAuthModal('register')}
-                            className="btn btn--primary"
-                        >
-                            Register
-                        </button>
-                    </div>
-                </div>
-            </nav>
+            <Navigation variant="landing" />
 
             {/* Hero Section */}
             <section className="hero-section">
