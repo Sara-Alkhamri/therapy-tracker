@@ -6,10 +6,12 @@ import Dashboard from './pages/Dashboard';
 import LogSessionPage from './pages/LogSessionPage';
 import SetGoalPage from './pages/SetGoalPage';
 import { AuthProvider } from './context/AuthContext';
+import { Analytics } from '@vercel/analytics/react';
 
 const App = () => {
   return (
     <Router>
+      <Analytics />
       <AuthProvider>
         <Routes>
           <Route path="/" element={<Home />} />

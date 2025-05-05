@@ -2,6 +2,19 @@
 @use '../abstracts/mixins' as *;
 @use 'sass:map';
 
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: map.get($colors, primary);
+
+    .logo-text {
+        font-family: "Pacifico", sans-serif;
+        margin-bottom: unset;
+        margin-left: -35px;
+    }
+}
 
 .landing-nav {
     background: map.get($colors, white);
@@ -17,20 +30,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-
-    .logo {
-        display: flex;
-        align-items: center;
-        font-size: 1.8rem;
-        font-weight: 600;
-        color: map.get($colors, primary);
-
-        .logo-text {
-            font-family: "Pacifico", sans-serif;
-            margin-bottom: unset;
-            margin-left: -35px;
-        }
     }
 
     .nav-links {
